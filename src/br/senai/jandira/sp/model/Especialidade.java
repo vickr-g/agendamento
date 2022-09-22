@@ -7,6 +7,10 @@ public class Especialidade {
 	private String nome;
 	private String descricao;
 	
+	// contruindo classe
+	
+	
+
 	//metodos de acesso aos atributos
 	
 	public void setNome(String nome) {
