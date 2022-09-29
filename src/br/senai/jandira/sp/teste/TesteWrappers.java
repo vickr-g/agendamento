@@ -8,11 +8,9 @@ public class TesteWrappers {
 
 	public static void main(String[] args) {
 		
-		int a = 5;
 		
-		Integer b = 5;
 		
-		Double x = 2.9;
+		
 		ArrayList<Especialidade> especialidades = new ArrayList<>(); 
 		
 		Especialidade  e1 = new Especialidade();
@@ -55,7 +53,7 @@ public class TesteWrappers {
 		
 		System.out.println(notas.size());
 		
-		System.out.println(especialidades.get(3).getNome());
+//		System.out.println(especialidades.get(3).getNome());
 
 		   especialidades.get(1).setNome("Teste");
 
