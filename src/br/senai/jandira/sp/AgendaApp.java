@@ -1,7 +1,5 @@
 package br.senai.jandira.sp;
 
-
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 

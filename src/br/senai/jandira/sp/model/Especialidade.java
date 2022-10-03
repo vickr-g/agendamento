@@ -3,18 +3,49 @@ package br.senai.jandira.sp.model;
 import javax.swing.JOptionPane;
 
 public class Especialidade {
+
+    private static int contador = 99;
     private Integer codigo;
     private String nome;
     private String descricao;
 
-    // contruindo classe
-    //metodos de acesso aos atributos
+    public Especialidade(String nome) {
+        this.nome = nome;
+        this.contador++;
+        this.codigo = contador;
+
+    }
+
+    public Especialidade() {
+        this.contador++;
+        this.codigo = contador;
+
+    }
+
+    public Especialidade(String nome, String descricao) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.contador++;
+        this.codigo = contador;
+
+    }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public static int getContador() {
+        return contador;
+
+    }
+
     public void setNome(String nome) {
         if (nome.length() >= 3) {
             this.nome = nome;
         } else {
-            JOptionPane.showMessageDialog(null, nome + " Não é um nome valido!! \n deve conter pelo menos 3 letras");
+            JOptionPane.showMessageDialog(null, nome + " NÃ£o Ã© um nome vÃ¡lido" + "\\n O nome da especialidade deve ter pelo menos 3 letras", "Erro", JOptionPane.OK_OPTION);
         }
+
     }
 
     public String getNome() {
@@ -24,14 +55,13 @@ public class Especialidade {
     public void setDescricao(String descricao) {
         if (descricao.length() >= 10) {
             this.descricao = descricao;
-
         } else {
-            JOptionPane.showMessageDialog(null, descricao + "  Não é uma descrição válida! \n deve conter pelo menos 10 caracteres. \n tente novamente, por favor!");
+            JOptionPane.showMessageDialog(null, "A descriÃ§Ã£o Ã© muito pequena", "Erro", JOptionPane.OK_OPTION);
         }
-
     }
 
     public String getDescricao() {
         return descricao;
     }
+
 }
