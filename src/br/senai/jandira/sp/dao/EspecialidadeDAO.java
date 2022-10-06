@@ -44,15 +44,25 @@ public class EspecialidadeDAO {
             i++;
         }
     }
-
     public static void excluir(Integer codigo) {
         for (Especialidade e : especialidades) {
             if (e.getCodigo() == codigo) {
                 especialidades.remove(e);
                 break;
             }
-
         }
-
+    }
+    //criar lista de especialidade
+    public static void criarListaDeEspecialidade(){
+        Especialidade e1 = new Especialidade("Cardiologia", "parte da medicina que cuida do coração");
+        Especialidade e2 = new Especialidade("Clinico", "parte da medicina que cuida de tudo");
+        Especialidade e3 = new Especialidade("Ortopedista", "parte da medicina que cuida dos ossos");
+        Especialidade e4 = new Especialidade("Dermatologista", "parte da medicina que cuida da pele");
+        
+        especialidades.add(e1);
+        especialidades.add(e2);
+        especialidades.add(e3);
+        especialidades.add(e4);
+    
     }
 }
