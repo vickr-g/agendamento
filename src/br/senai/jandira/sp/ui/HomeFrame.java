@@ -165,7 +165,7 @@ public class HomeFrame extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 3, Short.MAX_VALUE)
         );
 
         panelHome.add(jPanel2);
@@ -174,20 +174,20 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Dados para contato:");
         panelHome.add(jLabel3);
-        jLabel3.setBounds(10, 160, 140, 20);
+        jLabel3.setBounds(20, 160, 140, 20);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("E-mail: suportein@sisacon.com");
         panelHome.add(jLabel4);
         jLabel4.setBounds(0, 180, 190, 20);
 
-        getContentPane().add(panelHome);
-        panelHome.setBounds(10, 140, 750, 370);
-
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Telefone: (11) 2450-6300");
-        getContentPane().add(jLabel5);
+        panelHome.add(jLabel5);
         jLabel5.setBounds(10, 200, 140, 20);
+
+        getContentPane().add(panelHome);
+        panelHome.setBounds(10, 160, 750, 350);
 
         buttonMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/user.png"))); // NOI18N
         buttonMedico.setText("Médico");
@@ -199,7 +199,7 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(buttonMedico);
         buttonMedico.setBounds(100, 90, 90, 50);
 
-        setSize(new java.awt.Dimension(787, 536));
+        setSize(new java.awt.Dimension(787, 537));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

@@ -1,4 +1,4 @@
-package br.senai.jandira.sp.dao;
+    package br.senai.jandira.sp.dao;
 
 import br.senai.jandira.sp.model.Especialidade;
 import java.util.ArrayList;

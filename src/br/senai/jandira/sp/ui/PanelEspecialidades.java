@@ -2,6 +2,9 @@
 package br.senai.jandira.sp.ui;
 
 import br.senai.jandira.sp.dao.EspecialidadeDAO;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 
 
 
@@ -11,6 +14,7 @@ public class PanelEspecialidades extends javax.swing.JPanel {
     public PanelEspecialidades() {
         initComponents();
         EspecialidadeDAO.criarListaDeEspecialidade();
+        ajustarTabela();
          preencherTabela();
           
     }
@@ -107,16 +111,40 @@ public class PanelEspecialidades extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonexcluirActionPerformed
-        // TODO add your handling code here:
+        int linha = tabela.getSelectedRow();
+        if (linha != -1) {
+            excluirEspecialidade(linha);
+        } else {
+            JOptionPane.showMessageDialog(this, "Voce precisa selecionar uma linha para excluir!" ,
+                    "Atenção", 
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    
+       
     }//GEN-LAST:event_buttonexcluirActionPerformed
 
+    private void excluirEspecialidade(int linha){
+        
+      String codigoStr = tabela.getValueAt(linha, 0).toString();
+      Integer codigo = Integer.valueOf(codigoStr);
+        
+        EspecialidadeDAO.excluir(codigo);
+        
+        preencherTabela();
+       
+    }
+    
+    
+    
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
+           
+        
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
-        EspecialidadesDialog d = new EspecialidadesDialog(null,true);
+        EspecialidadeDialog d = new EspecialidadeDialog(null, true);
         d.setVisible(true);
+        preencherTabela();
 
     }//GEN-LAST:event_buttonAddActionPerformed
 
@@ -130,11 +158,23 @@ public class PanelEspecialidades extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void preencherTabela() {
-        
-    
-
+  
         tabela.setModel(EspecialidadeDAO.getTabelaEspecialidades());
-
+        ajustarTabela();
+    }
+    private void ajustarTabela(){
+        // impedir que o usuarioas colunas 
+        tabela.getTableHeader().setReorderingAllowed(false);
+        
+        //bloquear a edçõa das celulas 
+        tabela.setDefaultEditor(Object.class, null);
+        
+        //definir largura
+        tabela.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(100);
+         tabela.getColumnModel().getColumn(1).setPreferredWidth(300);
+          tabela.getColumnModel().getColumn(2).setPreferredWidth(310);
+           
     }
 
 }
