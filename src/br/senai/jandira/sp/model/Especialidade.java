@@ -11,25 +11,25 @@ public class Especialidade {
 
     public Especialidade(String nome) {
         this.nome = nome;
-        this.contador++;
-        this.codigo = contador;
+        gerarCodigo();
 
     }
 
     public Especialidade() {
-        this.contador++;
-        this.codigo = contador;
+        gerarCodigo();
 
     }
 
     public Especialidade(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-        this.contador++;
-        this.codigo = contador;
+     gerarCodigo();
 
     }
-
+public void gerarCodigo(){
+    this.contador++;
+        this.codigo = contador;
+}
     public Integer getCodigo() {
         return codigo;
     }

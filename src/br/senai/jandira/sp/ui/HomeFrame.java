@@ -209,26 +209,25 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPacienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_buttonPacienteActionPerformed
 
     private void buttonPlanodeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanodeSaudeActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_buttonPlanodeSaudeActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_buttonSairActionPerformed
 
     private void buttonAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgendaActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_buttonAgendaActionPerformed
 
     private void buttonEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadeActionPerformed
 
         panelEspecialidades.setVisible(true);
         panelHome.setVisible(false);
-
 
     }//GEN-LAST:event_buttonEspecialidadeActionPerformed
 

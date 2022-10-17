@@ -1,16 +1,13 @@
-
 package br.senai.jandira.sp.ui;
 
 import br.senai.jandira.sp.dao.EspecialidadeDAO;
+import br.senai.jandira.sp.model.Especialidade;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-
-
-
 public class PanelEspecialidades extends javax.swing.JPanel {
 
-  
+  private int linha;
     public PanelEspecialidades() {
         initComponents();
         EspecialidadeDAO.criarListaDeEspecialidade();
@@ -19,6 +16,13 @@ public class PanelEspecialidades extends javax.swing.JPanel {
           
     }
 
+    private int getLinha() {
+        linha = tabela.getSelectedRow();
+        return linha;
+    }
+  private void setLinha(){
+      linha = tabela.getSelectedRow();
+  }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -111,9 +115,9 @@ public class PanelEspecialidades extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonexcluirActionPerformed
-        int linha = tabela.getSelectedRow();
+         linha = tabela.getSelectedRow();
         if (linha != -1) {
-            excluirEspecialidade(linha);
+            excluirEspecialidade();
         } else {
             JOptionPane.showMessageDialog(this, "Voce precisa selecionar uma linha para excluir!" ,
                     "Atenção", 
@@ -123,23 +127,52 @@ public class PanelEspecialidades extends javax.swing.JPanel {
        
     }//GEN-LAST:event_buttonexcluirActionPerformed
 
-    private void excluirEspecialidade(int linha){
+    private void excluirEspecialidade(){
         
-      String codigoStr = tabela.getValueAt(linha, 0).toString();
-      Integer codigo = Integer.valueOf(codigoStr);
+     
         
-        EspecialidadeDAO.excluir(codigo);
+        int resposta = JOptionPane.showConfirmDialog(this,
+                "voce realmente deseja excluir?", 
+                "ATENÇÃO",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+      
+                System.out.println(resposta);
+      if(resposta == 0){
+      
+        EspecialidadeDAO.excluir(getCodigo());
         
         preencherTabela();
        
     }
-    
-    
+    }
+    private Integer  getCodigo(){
+         String codigoStr = tabela.getValueAt(linha, 0).toString();
+        Integer codigo = Integer.valueOf(codigoStr);
+        return codigo;
+         
+    }
+
     
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-           
+        if(getLinha() != -1){
+          editarEspecialidade();  
+        }else{
+            JOptionPane.showConfirmDialog(this,
+                    "por favor selecione a linha que voce deseja editar",
+                    "especialidades", 
+                  JOptionPane.WARNING_MESSAGE);
+        }
         
     }//GEN-LAST:event_buttonEditActionPerformed
+    private void editarEspecialidade(){
+    Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
+    
+     EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, especialidade);
+     
+        especialidadeDialog.setVisible(true);        
+        preencherTabela();
+    }                  
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         EspecialidadeDialog d = new EspecialidadeDialog(null, true);
