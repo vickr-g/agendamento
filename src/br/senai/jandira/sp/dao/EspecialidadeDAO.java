@@ -25,9 +25,7 @@ public class EspecialidadeDAO {
     public static Especialidade getEspecialidade(Integer codigo) {
         for (Especialidade e : especialidades) {
             if (e.getCodigo() == codigo) {
-                especialidades.remove(e);
                 return e;
-
             }
 
         }
@@ -45,6 +43,7 @@ public class EspecialidadeDAO {
             i++;
         }
     }
+    
     public static void excluir(Integer codigo) {
         for (Especialidade e : especialidades) {
             if (e.getCodigo() == codigo) {
@@ -67,7 +66,7 @@ public class EspecialidadeDAO {
     
     }
     public static DefaultTableModel getTabelaEspecialidades(){
-        System.out.println("monatando..." + especialidades.size());
+        
         
         
         String[] titulo = {"CODIGO", "NOME DA ESPECIALIDADE", "DESCRICAO"};
