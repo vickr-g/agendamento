@@ -8,16 +8,16 @@ public class HomeFrame extends javax.swing.JFrame {
         initComponents();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/senai/jandira/sp/imagens/notepad.png")));
         initPanels();
-       
+
     }
     //atributo da classe
 
     PanelEspecialidades panelEspecialidades;
-
+     PanelPlano panelPlano;
 //constantes
     private final int POS_X = 10;
     private final int POS_Y = 140;
-    private final int LARGURA = 750;
+    private final int LARGURA = 780;
     private final int ALTURA = 370;
 
     @SuppressWarnings("unchecked")
@@ -206,28 +206,32 @@ public class HomeFrame extends javax.swing.JFrame {
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         panelEspecialidades.setVisible(false);
         panelHome.setVisible(true);
+        panelPlano.setVisible(false);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPacienteActionPerformed
-        
+
     }//GEN-LAST:event_buttonPacienteActionPerformed
 
     private void buttonPlanodeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanodeSaudeActionPerformed
-        
+        panelPlano.setVisible(true);
+        panelHome.setVisible(false);
+        panelEspecialidades.setVisible(false);
     }//GEN-LAST:event_buttonPlanodeSaudeActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
-       
+
     }//GEN-LAST:event_buttonSairActionPerformed
 
     private void buttonAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgendaActionPerformed
-       
+
     }//GEN-LAST:event_buttonAgendaActionPerformed
 
     private void buttonEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadeActionPerformed
 
         panelEspecialidades.setVisible(true);
         panelHome.setVisible(false);
+        panelPlano.setVisible(false);
 
     }//GEN-LAST:event_buttonEspecialidadeActionPerformed
 
@@ -266,7 +270,20 @@ public class HomeFrame extends javax.swing.JFrame {
 
         getContentPane().add(panelEspecialidades);
         panelEspecialidades.setVisible(false);
-
+        
+        panelPlano = new PanelPlano();
+        panelPlano.setBounds(
+                POS_X,
+                POS_Y,
+                LARGURA,
+                ALTURA);
+        
+        getContentPane().add(panelPlano);
+        panelPlano.setVisible(false);
+        
     }
-
+    
+   
+   
 }
+

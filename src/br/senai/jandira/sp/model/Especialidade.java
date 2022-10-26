@@ -23,13 +23,15 @@ public class Especialidade {
     public Especialidade(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-     gerarCodigo();
+        gerarCodigo();
 
     }
-public void gerarCodigo(){
-    this.contador++;
+
+    public void gerarCodigo() {
+        this.contador++;
         this.codigo = contador;
-}
+    }
+
     public Integer getCodigo() {
         return codigo;
     }
