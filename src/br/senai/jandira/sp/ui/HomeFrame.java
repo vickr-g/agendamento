@@ -82,6 +82,7 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 770, 80);
 
+        buttonHome.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         buttonHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/home (1).png"))); // NOI18N
         buttonHome.setText("Home");
         buttonHome.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +93,7 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(buttonHome);
         buttonHome.setBounds(10, 90, 90, 50);
 
+        buttonPaciente.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         buttonPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/group.png"))); // NOI18N
         buttonPaciente.setText("Paciente");
         buttonPaciente.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +104,7 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(buttonPaciente);
         buttonPaciente.setBounds(190, 90, 100, 50);
 
+        buttonPlanodeSaude.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         buttonPlanodeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/desk.png"))); // NOI18N
         buttonPlanodeSaude.setText(" Plano de Saude");
         buttonPlanodeSaude.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +124,7 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(buttonSair);
         buttonSair.setBounds(670, 90, 80, 50);
 
+        buttonAgenda.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         buttonAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/notebook.png"))); // NOI18N
         buttonAgenda.setText("Agenda");
         buttonAgenda.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +135,7 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(buttonAgenda);
         buttonAgenda.setBounds(290, 90, 100, 50);
 
+        buttonEspecialidade.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         buttonEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/pin.png"))); // NOI18N
         buttonEspecialidade.setText("Especialidade");
         buttonEspecialidade.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +194,7 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(panelHome);
         panelHome.setBounds(10, 160, 750, 350);
 
+        buttonMedico.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         buttonMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/user.png"))); // NOI18N
         buttonMedico.setText("Médico");
         buttonMedico.addActionListener(new java.awt.event.ActionListener() {
@@ -220,7 +226,7 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPlanodeSaudeActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
-
+ 
     }//GEN-LAST:event_buttonSairActionPerformed
 
     private void buttonAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgendaActionPerformed

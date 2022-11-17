@@ -1,18 +1,43 @@
 package br.senai.jandira.sp.dao;
 
+import br.senai.jandira.sp.model.Especialidade;
 import java.time.LocalDate;
 import br.senai.jandira.sp.model.PlanoDeSaude;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class PlanoDeSaudeDAO {
 
-   
+    private final static String URL = "C:\\Users\\22282222\\javadst\\PlanoDeSaude.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282222\\javadst\\PlanoDeSaude-temp.txt";
+    private final static Path PATH = Paths.get(URL);
+    private final static Path PATH_TEMP = Paths.get(URL_TEMP);
+
     private static ArrayList<PlanoDeSaude> planosDeSaude = new ArrayList<>();
 
-    public static void gravar(PlanoDeSaude p) { //criar
-        planosDeSaude.add(p);
+    public static void gravar(PlanoDeSaude plano) { //criar
+        planosDeSaude.add(plano);
+
+        try {
+            BufferedWriter escritor = Files.newBufferedWriter(PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+
+            escritor.write(plano.getPlanoSeparadaPorPontoEVirgula());
+            escritor.newLine();
+            escritor.close();
+
+        } catch (IOException erro) {
+        }
     }
 
     public static ArrayList<PlanoDeSaude> getPlano() { //read
@@ -33,7 +58,7 @@ public class PlanoDeSaudeDAO {
     }
 
     public static void atualizar(PlanoDeSaude planoDeSaudeAtualizada) { // UPDATE
-        
+
         for (PlanoDeSaude p : planosDeSaude) {
 
             if (p.getNumero() == planoDeSaudeAtualizada.getNumero()) {
@@ -41,7 +66,7 @@ public class PlanoDeSaudeDAO {
                 break;
 
             }
-
+            atualizarArquivo();
         }
     }
 
@@ -53,20 +78,55 @@ public class PlanoDeSaudeDAO {
                 break;
             }
         }
+        atualizarArquivo();
+    }
+
+    private static void atualizarArquivo() {
+        // criar representação dos arquivos que serao manipulados 
+        File arquivoAtual = new File(URL);
+        File arquivoTemp = new File(URL_TEMP);
+
+        try {
+            //criararquivo
+            arquivoTemp.createNewFile();
+
+            BufferedWriter bwTemp = Files.newBufferedWriter(PATH_TEMP,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+
+            //interar para add as especialidade no arquivo temporario exceto o que o registro nao que mais
+            for (PlanoDeSaude p : planosDeSaude) {
+                bwTemp.write(p.getPlanoSeparadaPorPontoEVirgula());
+                bwTemp.newLine();
+            }
+            bwTemp.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
-// Criar uma lista inicial de especialidades
     public static void criarListaDePlanoDeSaude() {
-        PlanoDeSaude plano1 = new PlanoDeSaude("125422552", "Prata", "Intermedica", LocalDate.of(2026, 02, 15));
-        PlanoDeSaude plano2 = new PlanoDeSaude("125347812", "Ouro", "NotreDame", LocalDate.of(2028, 12, 12));
-        PlanoDeSaude plano3 = new PlanoDeSaude("145646514", "Prata", "Amil", LocalDate.of(2027, 11, 18));
-        PlanoDeSaude plano4 = new PlanoDeSaude("600865453", "Prata", "Unimed", LocalDate.of(2035, 8, 20));
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
 
-        planosDeSaude.add(plano1);
-        planosDeSaude.add(plano2);
-        planosDeSaude.add(plano3);
-        planosDeSaude.add(plano4);
+            String linha = leitor.readLine();
+
+            while (linha != null) {
+                //transformar os dados da linha em especialdade
+                String[] vetor = linha.split(";");
+               PlanoDeSaude p = new PlanoDeSaude(vetor[1], vetor[2], vetor[3],LocalDate.parse(vetor[4]) ,Integer.valueOf(vetor[0]));
+
+                //guardar a especialidade na lista
+                  planosDeSaude.add(p);
+                //ler a proxima linha 
+                linha = leitor.readLine();
+            }
+            leitor.close();
+
+        } catch (IOException p) {
+        }
 
     }
 
@@ -81,9 +141,9 @@ public class PlanoDeSaudeDAO {
             dados[i][1] = p.getNumero();
             dados[i][2] = p.getOperadora();
             dados[i][3] = p.getCategoria();
-            
+
             DateTimeFormatter barra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            
+
             dados[i][4] = p.getValidade().format(barra);
 
         }
