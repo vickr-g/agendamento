@@ -104,6 +104,14 @@ public class EspecialidadeDAO {
                 bwTemp.newLine();
             }
             bwTemp.close();
+            
+            
+            // Excluir o arquivo atual
+            arquivoAtual.delete();
+
+            // Renomear o arquivo temporário
+            arquivoTemp.renameTo(arquivoAtual);
+
 
         } catch (IOException e) {
             e.printStackTrace();

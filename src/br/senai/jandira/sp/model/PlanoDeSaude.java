@@ -13,44 +13,31 @@ public class PlanoDeSaude {
     private static int quantidade;
     
     
-    public PlanoDeSaude(String numero, String categoria, String operadora, LocalDate validade) {
-        this.operadora = operadora;
-        this.categoria = categoria;
-        this.numero = numero;
-        this.validade = validade;
-        gerarCodigo();
-
-    }
-
-    public PlanoDeSaude(String operadora, String categoria, Integer codigo) {
-        this.codigo = codigo;
-        this.operadora = operadora;
-        this.categoria = categoria;
-        this.numero = numero;
-        this.validade = validade;
-    }
-
-   
-  public PlanoDeSaude(String operadora) {
-        this.operadora = operadora;
-        gerarCodigo();
-    }
-
-    public PlanoDeSaude() {   
-        gerarCodigo();
-    }
-    
-
-    public PlanoDeSaude(String numero, String categoria, String operadora, LocalDate validade, Integer Codigo) {
-        this.numero = numero;
-        this.categoria = categoria;
-        this.operadora = operadora;
-        this.validade = validade;
-        this.codigo = codigo;
-         this.contador = codigo;
+    public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade) {
+            this.operadora = operadora;
+            this.categoria = categoria;
+            this.numero = numero;
+            this.validade = validade;
+            gerarCodigo();
+        }
+	
+	public PlanoDeSaude(String operadora) {
+            this.operadora = operadora;
+            gerarCodigo();
+	}
+	
+	public PlanoDeSaude() {
+            gerarCodigo();
+	}
         
-
-    }
+        public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade, Integer codigo) {
+            this.operadora = operadora;
+            this.categoria = categoria;
+            this.numero = numero;
+            this.validade = validade;
+            this.codigo = codigo;
+            this.contador = codigo;
+        }
 
   
 

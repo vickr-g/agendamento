@@ -106,14 +106,14 @@ public class TesteObjetos {
 
         for (PlanoDeSaude p : planos) {
             System.out.println(p.getOperadora());
-            System.out.println(p.getQuantidade());
+           
         }
 
-        System.out.println("--------" + PlanoDeSaude.getQuantidade());
+      
 
         AgendaApp.main(args);
 
-        System.out.println("--------" + PlanoDeSaude.getQuantidade());
+       
 
     }
 
