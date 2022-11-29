@@ -1,7 +1,5 @@
 package br.senai.jandira.sp.ui;
-
 import br.senai.jandira.sp.dao.MedicoDAO;
-
 import br.senai.jandira.sp.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 
@@ -10,8 +8,11 @@ private int linha;
 
     public PanelMedico() {
         initComponents();
+        MedicoDAO.criarListaDeMedicos();
+        ajustarTabela();
+        preencherTabela();
     }
-private int getLinha() {
+    private int getLinha() {
         linha = tabelaM.getSelectedRow();
         return linha;
     }
@@ -33,11 +34,11 @@ private int getLinha() {
         jScrollEspecialidades = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaM = new javax.swing.JTable();
         buttonAdicionar = new javax.swing.JButton();
         buttonEditar = new javax.swing.JButton();
         buttonExcluir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaM = new javax.swing.JTable();
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -53,20 +54,6 @@ private int getLinha() {
         jScrollEspecialidades.setViewportView(tabela);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(153, 0, 0))); // NOI18N
-
-        tabelaM.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "CRM", "Nome", "E-mail", "Especialidade", "Data Nascimento", "Telefone"
-            }
-        ));
-        tabelaM.setName("Crm, Nome, Especialidade, E-mail"); // NOI18N
-        jScrollPane2.setViewportView(tabelaM);
 
         buttonAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/plus.png"))); // NOI18N
         buttonAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,24 +76,41 @@ private int getLinha() {
             }
         });
 
+        tabelaM.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tabelaM);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 403, Short.MAX_VALUE)
                 .addComponent(buttonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
@@ -132,8 +136,13 @@ private int getLinha() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
-        MedicoDialog m = new MedicoDialog(null, true, OperacaoEnum.ADICIONAR);
-        m.setVisible(true);
+        MedicooDialog medicoDialog =
+                new MedicooDialog (
+                        null, 
+                        true, 
+                        OperacaoEnum.ADICIONAR);
+
+        medicoDialog.setVisible(true);
         preencherTabela();
     }//GEN-LAST:event_buttonAdicionarActionPerformed
 
@@ -185,7 +194,7 @@ private int getLinha() {
     private javax.swing.JButton buttonExcluir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollEspecialidades;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabela;
     private javax.swing.JTable tabelaM;
     // End of variables declaration//GEN-END:variables

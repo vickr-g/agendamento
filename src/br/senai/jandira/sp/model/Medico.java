@@ -1,6 +1,7 @@
 package br.senai.jandira.sp.model;
 
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 public class Medico {
 
@@ -13,36 +14,37 @@ public class Medico {
     private String email;
     private LocalDate dataDeNacsimento;
 
-    public Medico(String operadora, String categoria, String numero, LocalDate validade) {
+    public Medico(String crm, String nome, String telefone, String email, LocalDate dataDeNascimento, Integer codigo) {
         this.crm = crm;
         this.nome = nome;
         this.telefone = telefone;
-        this.dataDeNacsimento = dataDeNacsimento;
-        gerarCodigo();
+        this.email = email;
+        this.dataDeNacsimento = dataDeNascimento;
+        this.codigo = codigo;
+        this.contador = codigo;
     }
-
-    public Medico(String crm) {
-        this.crm = crm;
-        gerarCodigo();
-    }
-
+    
     public Medico() {
         gerarCodigo();
     }
-
-    public Medico(String operadora, String categoria, String numero, LocalDate validade, Integer codigo) {
+    
+    public Medico(String crm, String nome, String telefone, Integer codigo) {
         this.crm = crm;
         this.nome = nome;
         this.telefone = telefone;
-        this.dataDeNacsimento = dataDeNacsimento;
         this.codigo = codigo;
         this.contador = codigo;
     }
 
+
     //metodos de acesso aos atributos
-    public void gerarCodigo() {
+     private void gerarCodigo() {
         this.contador++;
         this.codigo = contador;
+    }
+    
+    public int getContador() {
+        return contador;
     }
 
     public Integer getCodigo() {
@@ -53,20 +55,26 @@ public class Medico {
         this.codigo = codigo;
     }
 
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
+
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
-    }
 
-    public Especialidade[] getEspecialidades() {
-        return especialidades;
-    }
+        if (nome.length() >= 3) {
+            this.nome = nome;
+        } else {
+            JOptionPane.showMessageDialog(null, nome + " Não é um nome válido!\nDeve conter pelo menos 3 letras!");
+        }
 
-    public void setEspecialidades(Especialidade[] especialidades) {
-        this.especialidades = especialidades;
     }
 
     public String getTelefone() {
@@ -77,32 +85,32 @@ public class Medico {
         this.telefone = telefone;
     }
 
-    public String getCrm() {
-        return crm;
-    }
-
-    public void setCrm(String crm) {
-        this.crm = crm;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
-        email = email;
+        this.email = email;
     }
 
     public LocalDate getDataDeNacsimento() {
         return dataDeNacsimento;
     }
 
-    public void setDataDeNacsimento(LocalDate dataDeNacsimento) {
-        this.dataDeNacsimento = dataDeNacsimento;
+    public void setDataDeNacsimento(LocalDate dataDeNascimento) {
+        this.dataDeNacsimento = dataDeNascimento;
     }
 
-    public String getEspecialidadeSeparadaPorPontoEVirgula() {
-        return this.crm + ";" + this.nome + ";" + this.email + ";" + this.telefone + ";" + this.dataDeNacsimento + ";" + this.especialidades + ";";
+    public Especialidade[] getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(Especialidade[] especialidades) {
+        this.especialidades = especialidades;
+    }
+    
+    public String getMedicoSeparadoPorPontoEVirgula() {
+        return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.telefone + ";" + this.email + ";" + this.dataDeNacsimento;
     }
 
 }
