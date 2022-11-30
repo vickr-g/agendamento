@@ -1,6 +1,6 @@
 package br.senai.jandira.sp.ui;
-
 import br.senai.jandira.sp.dao.MedicoDAO;
+import br.senai.jandira.sp.model.Especialidade;
 import br.senai.jandira.sp.model.Medico;
 import br.senai.jandira.sp.model.OperacaoEnum;
 import java.time.LocalDate;
@@ -31,6 +31,7 @@ public class MedicooDialog extends javax.swing.JDialog {
         
         super(parent, modal);
         initComponents();
+
         
         medico = m;
         this.operacao = operacao;
@@ -41,7 +42,9 @@ public class MedicooDialog extends javax.swing.JDialog {
     }
 
     
-    
+    // private void preencherListaDeEspecialidades() {
+      // ListEspecialidade.setModel(EspecialidadeDAO.getListaDeEspecialidades());
+    //}
     private void preencherFormulario() {
         FieldCodigo.setText(medico.getCodigo().toString());
         FieldCrm.setText(medico.getCrm());
@@ -53,30 +56,24 @@ public class MedicooDialog extends javax.swing.JDialog {
     }
 
     private void preencherTitulo() {
-        jLabel1.setText("Medico" + operacao);
+        jLabelB.setText("Médicos  - " + operacao);
 
         if (operacao == OperacaoEnum.EDITAR) {
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/edit.png")));
+            jLabelB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/edit.png")));
 
         } else {
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/plus.png")));
+            jLabelB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/plus.png")));
 
         }
-    }
 
-    
-    public MedicooDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanelA = new javax.swing.JPanel();
+        jLabelB = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         FieldCodigo = new javax.swing.JTextField();
         FieldTelefone = new javax.swing.JTextField();
@@ -103,27 +100,27 @@ public class MedicooDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
+        jPanelA.setBackground(new java.awt.Color(153, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/plus (1).png"))); // NOI18N
-        jLabel1.setText("Médico - ADICIONAR");
+        jLabelB.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabelB.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/plus (1).png"))); // NOI18N
+        jLabelB.setText("Médico - ADICIONAR");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelALayout = new javax.swing.GroupLayout(jPanelA);
+        jPanelA.setLayout(jPanelALayout);
+        jPanelALayout.setHorizontalGroup(
+            jPanelALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelALayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLabelB)
                 .addGap(166, 166, 166))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanelALayout.setVerticalGroup(
+            jPanelALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelALayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
+                .addComponent(jLabelB)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -290,7 +287,7 @@ public class MedicooDialog extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,7 +302,7 @@ public class MedicooDialog extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -370,16 +367,11 @@ public class MedicooDialog extends javax.swing.JDialog {
         } else {
             editar();
         }
-        
-        if (operacao == OperacaoEnum.ADICIONAR) {
-            adicionar();
-        } else {
-            editar();
-        }
+       
     }//GEN-LAST:event_SalveButtonActionPerformed
  
- private void editar(){
-   medico.setCrm(FieldCrm.getText());
+ private void editar() {
+        medico.setCrm(FieldCrm.getText());
         medico.setNome(FieldNomeMedico.getText());
         medico.setTelefone(FieldTelefone.getText());
         medico.setEmail(FieldEmail.getText());
@@ -396,11 +388,11 @@ public class MedicooDialog extends javax.swing.JDialog {
         dispose();
    }
     
-
     private void adicionar() {
         // Criar um objeto especialidade
         Medico novoMedico = new Medico();
-        novoMedico.setCrm(FieldCrm.getText());
+        novoMedico.setCrm(
+                FieldCrm.getText());
         novoMedico.setNome(FieldNomeMedico.getText());
         novoMedico.setTelefone(FieldTelefone.getText());
         novoMedico.setEmail(FieldEmail.getText());
@@ -417,10 +409,6 @@ public class MedicooDialog extends javax.swing.JDialog {
         
         dispose();
     }
-
-   
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelButton;
     private javax.swing.JTextField FieldCodigo;
@@ -429,12 +417,11 @@ public class MedicooDialog extends javax.swing.JDialog {
     private javax.swing.JTextField FieldEmail;
     private javax.swing.JTextField FieldNomeMedico;
     private javax.swing.JTextField FieldTelefone;
-    private javax.swing.JList<String> ListEspecialidade;
+    private javax.swing.JList<Especialidade> ListEspecialidade;
     private javax.swing.JList<String> ListEspecialidadeMedico;
     private javax.swing.JButton SalveButton;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -443,9 +430,10 @@ public class MedicooDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelB;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelA;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables

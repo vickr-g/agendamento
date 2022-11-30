@@ -1,5 +1,6 @@
 package br.senai.jandira.sp.ui;
 import br.senai.jandira.sp.dao.MedicoDAO;
+import br.senai.jandira.sp.model.Medico;
 import br.senai.jandira.sp.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 
@@ -17,9 +18,7 @@ private int linha;
         return linha;
     }
 
-    private void setLinha() {
-        linha = tabelaM.getSelectedRow();
-    }
+
 
     private Integer getCodigo() {
         String codigoStr = tabelaM.getValueAt(linha, 0).toString();
@@ -27,6 +26,8 @@ private int linha;
         return codigo;
 
     }
+    
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -136,41 +137,55 @@ private int linha;
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
-        MedicooDialog medicoDialog =
+        MedicooDialog m =
                 new MedicooDialog (
                         null, 
                         true, 
                         OperacaoEnum.ADICIONAR);
 
-        medicoDialog.setVisible(true);
+        m.setVisible(true);
         preencherTabela();
     }//GEN-LAST:event_buttonAdicionarActionPerformed
 
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
-        if (getLinha() != -1) {
-     
+         if (getLinha() != -1) {
+            editarMedico();
         } else {
-            JOptionPane.showMessageDialog(this,
-                    "por favor selecione a linha que voce deseja editar",
-                    "Medico",
-                    JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(
+                this,
+                "Por Favor, selecione o médico que você deseja editar.",
+                "Médicos",
+                JOptionPane.WARNING_MESSAGE);
 
         }
-
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
         linha = tabelaM.getSelectedRow();
         if (linha != -1) {
-            excluirPlano();
+            excluirMedico();
         } else {
             JOptionPane.showMessageDialog(this, "Voce precisa selecionar uma linha para excluir!",
                     "Atenção",
                     JOptionPane.WARNING_MESSAGE);
         }
-    }
+    
+    }//GEN-LAST:event_buttonExcluirActionPerformed
+ private void editarMedico() {
+        
+        Medico medico = MedicoDAO.getMedico(getCodigo());
+        
+        MedicooDialog medicoDialog =
+                new MedicooDialog(
+                        null, 
+                        true, 
+                        medico, 
+                        OperacaoEnum.EDITAR);
 
-    private void excluirPlano() {
+        medicoDialog.setVisible(true);
+        preencherTabela();
+    }
+   private void excluirMedico() {
 
         int resposta = JOptionPane.showConfirmDialog(this,
                 "voce realmente deseja excluir?",
@@ -180,14 +195,11 @@ private int linha;
 
         if (resposta == 0) {
 
-          //  MedicoDAO.excluir(getCodigo());
+            MedicoDAO.excluir(getCodigo());
             preencherTabela();
 
         }
-
-    }//GEN-LAST:event_buttonExcluirActionPerformed
-
-
+   }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
     private javax.swing.JButton buttonEditar;
@@ -201,7 +213,7 @@ private int linha;
 private void preencherTabela() {
 
        
-
+tabelaM.setModel(MedicoDAO.getTabelaMedico());
         ajustarTabela();
     }
 

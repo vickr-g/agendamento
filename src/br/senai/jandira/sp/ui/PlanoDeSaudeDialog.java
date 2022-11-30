@@ -53,7 +53,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
     }
 
     private void preencherTitulo() {
-        jLabel2Add.setText("planos de saude" + operacao);
+        jLabel2Add.setText("Planos de Saude  - " + operacao);
 
         if (operacao == OperacaoEnum.EDITAR) {
             jLabel2Add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/jandira/sp/imagens/edit.png")));
