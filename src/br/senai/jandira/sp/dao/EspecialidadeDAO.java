@@ -161,14 +161,14 @@ public class EspecialidadeDAO {
         }
         return new DefaultTableModel(dados, titulo);
     }
-    public static DefaultListModel<Especialidade> getListaDeEspecialidades() {
-        DefaultListModel<Especialidade> listaDeEspecialidades = new DefaultListModel<>();
-        for (Especialidade i : getEspecialidades()) {
-            listaDeEspecialidades.addElement(i);
-            listaDeEspecialidades.toString();
+   
+public static DefaultListModel<String> getListaDeEspecialidades() {
+        DefaultListModel<String> listaDeEspecialidades = new DefaultListModel<>();
+        
+        for (Especialidade especialidade : especialidades) {
+            listaDeEspecialidades.addElement(especialidade.getCodigo() + " - " + especialidade.getNome());
         }
         return listaDeEspecialidades;
     }
-
 }
 
