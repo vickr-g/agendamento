@@ -23,11 +23,11 @@ public class Medico {
         this.codigo = codigo;
         this.contador = codigo;
     }
-    
+
     public Medico() {
         gerarCodigo();
     }
-    
+
     public Medico(String crm, String nome, String telefone, Integer codigo) {
         this.crm = crm;
         this.nome = nome;
@@ -36,13 +36,12 @@ public class Medico {
         this.contador = codigo;
     }
 
-
     //metodos de acesso aos atributos
-     private void gerarCodigo() {
+    private void gerarCodigo() {
         this.contador++;
         this.codigo = contador;
     }
-    
+
     public int getContador() {
         return contador;
     }
@@ -108,9 +107,17 @@ public class Medico {
     public void setEspecialidades(Especialidade[] especialidades) {
         this.especialidades = especialidades;
     }
-    
+
     public String getMedicoSeparadoPorPontoEVirgula() {
-        return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.telefone + ";" + this.email + ";" + this.dataDeNacsimento;
+        return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.telefone + ";" + this.email + ";" + this.dataDeNacsimento + ";" + getCodigoEspecialidades();
+    }
+
+    public String getCodigoEspecialidades() {
+        String codigoEspecialidades = "";
+        for (Especialidade especialidade : especialidades) {
+            codigoEspecialidades += especialidade.getCodigo() + "&";
+        }
+        return codigoEspecialidades;
     }
 
 }

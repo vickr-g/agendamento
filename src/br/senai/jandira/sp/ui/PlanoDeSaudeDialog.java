@@ -88,7 +88,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
 
         jLabelCodigo.setText("Código");
 
-        jPaneladd.setBackground(new java.awt.Color(153, 0, 51));
+        jPaneladd.setBackground(new java.awt.Color(153, 0, 0));
 
         jLabel2Add.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2Add.setForeground(new java.awt.Color(255, 255, 255));
@@ -217,6 +217,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoActionPerformed

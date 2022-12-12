@@ -13,6 +13,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
@@ -162,13 +163,15 @@ public class EspecialidadeDAO {
         return new DefaultTableModel(dados, titulo);
     }
    
-public static DefaultListModel<String> getListaDeEspecialidades() {
-        DefaultListModel<String> listaDeEspecialidades = new DefaultListModel<>();
+    public static DefaultListModel<String> getListaEspecialidade() {
+        DefaultListModel<String> listaEspecialidade = new DefaultListModel<>();
         
-        for (Especialidade especialidade : especialidades) {
-            listaDeEspecialidades.addElement(especialidade.getCodigo() + " - " + especialidade.getNome());
+        
+       for(Especialidade especialidade : especialidades){
+            listaEspecialidade.addElement(especialidade.getCodigo() + " - " + especialidade.getNome());
         }
-        return listaDeEspecialidades;
+        
+        return listaEspecialidade;
     }
 }
 
