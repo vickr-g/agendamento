@@ -1,6 +1,7 @@
 package br.senai.jandira.sp.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Medico {
@@ -8,7 +9,7 @@ public class Medico {
     private static int contador = 99;
     private Integer codigo;
     private String nome;
-    private Especialidade[] especialidades;
+    private ArrayList<Especialidade> especialidades;
     private String telefone;
     private String crm;
     private String email;
@@ -100,12 +101,12 @@ public class Medico {
         this.dataDeNacsimento = dataDeNascimento;
     }
 
-    public Especialidade[] getEspecialidades() {
-        return especialidades;
+    public void setEspecialidades(ArrayList<Especialidade> especialidades) {
+        this.especialidades = especialidades;
     }
 
-    public void setEspecialidades(Especialidade[] especialidades) {
-        this.especialidades = especialidades;
+    public ArrayList<Especialidade> getEspecialidades() {
+        return especialidades;
     }
 
     public String getMedicoSeparadoPorPontoEVirgula() {
